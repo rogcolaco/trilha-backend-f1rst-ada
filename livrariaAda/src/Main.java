@@ -1,14 +1,20 @@
-import Modelo.Produto.Livro;
-import Enum.GeneroLivro;
+import Modelo.Estoque.EstoqueGenerico;
+import Modelo.Produto.Brinquedo;
 
-import java.util.ArrayList;
-import java.util.List;
+import Enum.TipoBrinquedo;
 
 public class Main {
     public static void main(String[] args) {
-        Livro l = new Livro();
-        List<GeneroLivro> lista = new ArrayList<>();
-        lista.add(GeneroLivro.DIDATICO);
-        lista.forEach(c -> System.out.println(c));
+        EstoqueGenerico<Brinquedo> estoqueBrinquedo = new EstoqueGenerico<>();
+        System.out.println(estoqueBrinquedo.getEstoque());
+        Brinquedo b = new Brinquedo();
+        b.setId(1);
+        b.setTipo(TipoBrinquedo.DIDATICO);
+        b.setNome("Matemática legal");
+        b.setPreco(10.50);
+        b.setQuantidade(10);
+
+        estoqueBrinquedo.adicionarProduto(b);
+        System.out.println(estoqueBrinquedo.getEstoque());
     }
 }

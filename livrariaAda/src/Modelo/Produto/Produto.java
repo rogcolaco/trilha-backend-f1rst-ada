@@ -7,13 +7,14 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class Produto {
 
     private int id;
     private String nome;
     private double preco;
+    private int quantidade;
 
 
 }
