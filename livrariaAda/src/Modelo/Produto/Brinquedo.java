@@ -13,4 +13,15 @@ import lombok.Setter;
 @Setter
 public class Brinquedo extends Produto{
     private TipoBrinquedo tipo;
+
+    @Override
+    public String toString() {
+        return "Brinquedo {" +
+                "id=" + this.getId() +
+                ", nome='" + this.getNome() +
+                ", preco=" + this.getPreco() +
+                ", quantidade=" + this.getQuantidade() +
+                ", tipo=" + tipo +
+                '}';
+    }
 }

@@ -11,4 +11,8 @@ import lombok.Setter;
 @Setter
 public class Caixa {
     private double valorTotalCaixa = 0.0;
+
+    public void efetivarCompra(Double valorCompra){
+        valorTotalCaixa += valorCompra;
+    }
 }

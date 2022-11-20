@@ -16,5 +16,13 @@ public class Produto {
     private double preco;
     private int quantidade;
 
-
+    @Override
+    public String toString() {
+        return "Produto{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", preco=" + preco +
+                ", quantidade=" + quantidade +
+                '}';
+    }
 }

@@ -18,4 +18,16 @@ public class AlbumMusica extends Produto{
     private List<String> listaSelos;
     private List<GeneroMusica> listaGenerosMusicas;
 
+    @Override
+    public String toString() {
+        return "AlbumMusica {" +
+                "id=" + this.getId() +
+                ", nome='" + this.getNome() +
+                ", preco=" + this.getPreco() +
+                ", quantidade=" + this.getQuantidade() +
+                ", listaMusicosOuBandas=" + listaMusicosOuBandas +
+                ", listaSelos=" + listaSelos +
+                ", listaGenerosMusicas=" + listaGenerosMusicas +
+                '}';
+    }
 }

@@ -17,4 +17,17 @@ public class Livro extends Produto{
     private List<GeneroLivro> listaGenerosLivro;
     private String escritor;
     private String editora;
+
+    @Override
+    public String toString() {
+        return "Livro {" +
+                "id=" + this.getId() +
+                ", nome='" + this.getNome() +
+                ", preco=" + this.getPreco() +
+                ", quantidade=" + this.getQuantidade() +
+                ", listaGenerosLivro=" + listaGenerosLivro +
+                ", escritor='" + escritor + '\'' +
+                ", editora='" + editora + '\'' +
+                '}';
+    }
 }

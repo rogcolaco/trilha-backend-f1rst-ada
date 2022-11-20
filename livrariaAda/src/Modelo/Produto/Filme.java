@@ -18,4 +18,18 @@ public class Filme extends Produto{
     private List<String> listaDiretores;
     private List<String> listaProdutores;
     private List<GeneroFilme> listaGenerosFilme;
+
+    @Override
+    public String toString() {
+        return "Filme {" +
+                "id=" + this.getId() +
+                ", nome='" + this.getNome() +
+                ", preco=" + this.getPreco() +
+                ", quantidade=" + this.getQuantidade() +
+                ", estudioFilme='" + estudioFilme + '\'' +
+                ", listaDiretores=" + listaDiretores +
+                ", listaProdutores=" + listaProdutores +
+                ", listaGenerosFilme=" + listaGenerosFilme +
+                '}';
+    }
 }
