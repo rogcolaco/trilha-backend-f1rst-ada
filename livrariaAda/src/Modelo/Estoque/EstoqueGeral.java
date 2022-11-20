@@ -7,6 +7,8 @@ import lombok.Setter;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+
 
 @Getter
 @Setter
@@ -25,8 +27,21 @@ public class EstoqueGeral {
         return estoqueGeral;
     }
 
-    public EstoqueGeral() {
-        this.estoqueGeral = estoqueGeral;
+    public Set<CategoriasProdutosEmEstoque> consultaCategorias(){
+        return estoqueGeral.keySet();
+    }
+
+    public Map<Integer, ? extends Produto> consultaProdutosPorCategoria(CategoriasProdutosEmEstoque categoria){
+        if(!estoqueGeral.keySet().contains(categoria)){
+            System.out.println("Os produtos dessa categoria estão indisponíveis!");
+            System.out.println("Por favor utilize 'consultaCategorias' para consultar as categorias disponíveis");
+            return null;
+        } else {
+            return estoqueGeral.get(categoria);
+        }
+    }
+
+    private EstoqueGeral() {
     }
 
 

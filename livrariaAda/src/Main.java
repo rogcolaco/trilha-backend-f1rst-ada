@@ -1,9 +1,11 @@
+import Modelo.Consumidor.Consumidor;
 import Modelo.Estoque.EstoqueGenerico;
 import Modelo.Estoque.EstoqueGeral;
 import Modelo.Produto.Brinquedo;
 
 import Enum.TipoBrinquedo;
 import Enum.GeneroJogo;
+import Enum.CategoriasProdutosEmEstoque;
 import Modelo.Produto.Jogo;
 
 public class Main {
@@ -49,5 +51,14 @@ public class Main {
         System.out.println("\n\n\n Teste Estoque Geral \n\n\n");
         System.out.println(estoqueGeral.getEstoqueGeral());
 
+        System.out.println("\n\n\n Teste consumidor\n\n\n");
+        Consumidor c = new Consumidor();
+        Consumidor c2 = new Consumidor();
+        c.mostrarCategorias();
+        c.mostrarProdutosPorCategorias(CategoriasProdutosEmEstoque.BRINQUEDO);
+        System.out.println("\n");
+        c.mostrarProdutosPorCategorias(CategoriasProdutosEmEstoque.JOGO);
+        System.out.println("\n");
+        c.mostrarProdutosPorCategorias(CategoriasProdutosEmEstoque.LIVRO);
     }
 }
