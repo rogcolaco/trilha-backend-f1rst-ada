@@ -21,7 +21,7 @@ public class Filme extends Produto{
 
     @Override
     public String toString() {
-        return "Filme {" +
+        return "Categoria Filme {" +
                 "id=" + this.getId() +
                 ", nome='" + this.getNome() +
                 ", preco=" + this.getPreco() +

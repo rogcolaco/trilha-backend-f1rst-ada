@@ -60,5 +60,9 @@ public class Main {
         c.mostrarProdutosPorCategorias(CategoriasProdutosEmEstoque.JOGO);
         System.out.println("\n");
         c.mostrarProdutosPorCategorias(CategoriasProdutosEmEstoque.LIVRO);
+//        System.out.println("-----");
+        c.inserirProdutoNoCarrinhoDeCompras(CategoriasProdutosEmEstoque.BRINQUEDO, 2, 5);
+        c.inserirProdutoNoCarrinhoDeCompras(CategoriasProdutosEmEstoque.JOGO, 1, 3);
+        System.out.println(c.getCarrinhoDeCompra());
     }
 }

@@ -16,7 +16,7 @@ public class Brinquedo extends Produto{
 
     @Override
     public String toString() {
-        return "Brinquedo {" +
+        return "Categoria Brinquedo {" +
                 "id=" + this.getId() +
                 ", nome='" + this.getNome() +
                 ", preco=" + this.getPreco() +

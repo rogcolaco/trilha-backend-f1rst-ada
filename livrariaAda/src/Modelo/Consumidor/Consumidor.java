@@ -2,7 +2,7 @@ package Modelo.Consumidor;
 
 import Modelo.Estoque.EstoqueGeral;
 import Enum.CategoriasProdutosEmEstoque;
-import Modelo.Produto.Produto;
+import Modelo.Produto.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,12 +35,44 @@ public class Consumidor {
         }
     }
 
-    public void inserirProdutoNoCarrinhoDeCompras(){
-//        CarrinhoDeCompra carrinhoDeCompra = CarrinhoDeCompra.getInstance();
+    public void inserirProdutoNoCarrinhoDeCompras(CategoriasProdutosEmEstoque categoria, Integer id, Integer quantidade){
+        Map<Integer, ? extends Produto> estoquePorCategoria = new HashMap<>();
+        estoquePorCategoria =  estoqueGeral.consultaProdutosPorCategoria(categoria);
+        if(estoquePorCategoria.get(id).getQuantidade()<quantidade){
+            System.out.println("Quantidade Insuficiente para atender pedido");
+        } else {
+            switch (categoria) {
+                case BRINQUEDO -> {
+                    Brinquedo brinquedo = (Brinquedo) estoquePorCategoria.get(id);
+                    brinquedo.setQuantidade(quantidade);
+                    carrinhoDeCompra.adicinarBrinquedo(brinquedo);
+                    break;
+                }
+                case JOGO -> {
+                    Jogo jogo = (Jogo) estoquePorCategoria.get(id);
+                    jogo.setQuantidade(quantidade);
+                    carrinhoDeCompra.adicinarJogo(jogo);
+                    break;
+                }
+                case LIVRO -> {
+                    Livro livro = (Livro) estoquePorCategoria.get(id);
+                    livro.setQuantidade(quantidade);
+                    carrinhoDeCompra.adicinarLivro(livro);
+                    break;
+                }
+                case FILME -> {
+                    Filme filme = (Filme) estoquePorCategoria.get(id);
+                    filme.setQuantidade(quantidade);
+                    carrinhoDeCompra.adicinarFilme(filme);
+                    break;
+                }
+                case MUSICA -> {
+                    AlbumMusica musica = (AlbumMusica) estoquePorCategoria.get(id);
+                    musica.setQuantidade(quantidade);
+                    carrinhoDeCompra.adicinaralbumMusica(musica);
+                    break;
+                }
+            }
+        }
     }
-
-    public void consultarCarrinhoDeCompras(){
-        System.out.println(carrinhoDeCompra);
-    }
-
 }
