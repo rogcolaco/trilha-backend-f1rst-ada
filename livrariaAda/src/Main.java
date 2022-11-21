@@ -1,3 +1,4 @@
+import Modelo.Caixa.Caixa;
 import Modelo.Consumidor.Consumidor;
 import Modelo.Estoque.EstoqueGenerico;
 import Modelo.Estoque.EstoqueGeral;
@@ -13,6 +14,7 @@ public class Main {
         EstoqueGenerico<Brinquedo> estoqueBrinquedo = new EstoqueGenerico<>();
         EstoqueGenerico<Jogo> estoqueJogo = new EstoqueGenerico<>();
         EstoqueGeral estoqueGeral = EstoqueGeral.getInstance();
+        Caixa caixa = Caixa.getInstance();
         System.out.println(estoqueBrinquedo.getEstoque());
         Brinquedo b = new Brinquedo();
         b.setId(1);
@@ -33,10 +35,6 @@ public class Main {
         System.out.println(estoqueBrinquedo.getEstoque());
         b.setQuantidade(30);
         estoqueBrinquedo.alterarProduto(b);
-//        System.out.println(estoqueBrinquedo.getEstoque());
-//        System.out.println(estoqueBrinquedo.buscarProduto(2));
-//        estoqueBrinquedo.removerProduto(b);
-//        System.out.println(estoqueBrinquedo.getEstoque());
 
         Jogo jogo = new Jogo();
         jogo.setId(1);
@@ -60,9 +58,12 @@ public class Main {
         c.mostrarProdutosPorCategorias(CategoriasProdutosEmEstoque.JOGO);
         System.out.println("\n");
         c.mostrarProdutosPorCategorias(CategoriasProdutosEmEstoque.LIVRO);
-//        System.out.println("-----");
+
         c.inserirProdutoNoCarrinhoDeCompras(CategoriasProdutosEmEstoque.BRINQUEDO, 2, 5);
-        c.inserirProdutoNoCarrinhoDeCompras(CategoriasProdutosEmEstoque.JOGO, 1, 3);
+        c.inserirProdutoNoCarrinhoDeCompras(CategoriasProdutosEmEstoque.JOGO, 1, 1);
         System.out.println(c.getCarrinhoDeCompra());
+        c.finalizarCompra(c.getCarrinhoDeCompra());
+        System.out.println("Valor total caixa: " + caixa.getValorTotalCaixa());
+        System.out.println(estoqueGeral.getEstoqueGeral());
     }
 }

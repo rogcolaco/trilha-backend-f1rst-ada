@@ -1,5 +1,7 @@
 package Modelo.Consumidor;
 
+import Modelo.Caixa.Caixa;
+import Modelo.Estoque.EstoqueGeral;
 import Modelo.Produto.*;
 import Enum.CategoriasProdutosEmEstoque;
 import lombok.AllArgsConstructor;
@@ -9,6 +11,7 @@ import lombok.Setter;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,6 +20,8 @@ import java.util.Map;
 public class CarrinhoDeCompra{
 
     private static CarrinhoDeCompra instance;
+    Caixa caixa = Caixa.getInstance();
+    EstoqueGeral estoqueGeral = EstoqueGeral.getInstance();
 
     public Map<CategoriasProdutosEmEstoque, Map<Integer, ? extends Produto>> meuCarrinhoDeCompras = new HashMap<>();
 
@@ -53,6 +58,23 @@ public class CarrinhoDeCompra{
         novoItem.put(albummusica.getId(), albummusica);
         meuCarrinhoDeCompras.put(CategoriasProdutosEmEstoque.JOGO, novoItem);
         System.out.println("Item adicionado ao Carrinho");
+    }
+
+    public void checkout(){
+        meuCarrinhoDeCompras.forEach((keyCategoria, produtosCompradosPorCategoria) -> {
+//            estoqueGeral.atualizaEstoquesAposCompra(keyCategoria, produtosCompradosPorCategoria);
+            produtosCompradosPorCategoria.forEach( (keyProduto, produtoComprado)-> {
+//                System.out.println("#########");
+//                System.out.println(keyProduto + "---" + produtoComprado);
+//                estoqueGeral.atualizarEstoqueAposCompra(keyCategoria, keyProduto, produtoComprado);
+                atualizarCaixa(produtoComprado.getPreco(), produtoComprado.getQuantidade());
+            });
+        });
+    }
+
+    private void atualizarCaixa(Double valorItem, Integer quantidade){
+        double valorTotalItem = valorItem * quantidade;
+        caixa.efetivarCompra(valorTotalItem);
     }
 
     @Override

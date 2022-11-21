@@ -75,4 +75,8 @@ public class Consumidor {
             }
         }
     }
+
+    public void finalizarCompra(CarrinhoDeCompra carrinhoDeCompra){
+        carrinhoDeCompra.checkout();
+    }
 }

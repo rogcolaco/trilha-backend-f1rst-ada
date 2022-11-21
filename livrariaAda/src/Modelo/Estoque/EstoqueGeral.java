@@ -23,6 +23,14 @@ public class EstoqueGeral {
         System.out.println("Estoque Geral Atualizado");
     }
 
+//    public void atualizarEstoqueAposCompra(CategoriasProdutosEmEstoque categoria, int keyProdutoComprado, T produtocomprado){
+//
+//    }
+
+    private void buscarProdutoPorChaveId(Integer keyProduct, Map<Integer, ? extends Produto> estoqueEspecifico){
+
+    }
+
     public Map<CategoriasProdutosEmEstoque, Map<Integer, ? extends Produto>> consultarEstoqueGeral(){
         return estoqueGeral;
     }
