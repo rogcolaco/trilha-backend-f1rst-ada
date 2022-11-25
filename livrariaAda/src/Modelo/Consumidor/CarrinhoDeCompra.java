@@ -68,7 +68,12 @@ public class CarrinhoDeCompra{
                         - produtosCompradosPorCategoria.get(c).getQuantidade());
             });
             produtosCompradosPorCategoria.forEach( (keyProduto, produtoComprado)-> {
-                atualizarCaixa(produtoComprado.getPreco(), produtoComprado.getQuantidade());
+                if(keyCategoria.equals(CategoriasProdutosEmEstoque.LIVRO) &&
+                        ((produtoComprado.getPreco()*produtoComprado.getQuantidade()) > 200.0)){
+                    atualizarCaixa(produtoComprado.getPreco()*0.85, produtoComprado.getQuantidade());
+                } else {
+                    atualizarCaixa(produtoComprado.getPreco(), produtoComprado.getQuantidade());
+                }
             });
         });
     }
