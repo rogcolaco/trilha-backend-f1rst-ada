@@ -15,6 +15,7 @@ public class Produto {
     private String nome;
     private double preco;
     private int quantidade;
+    private Boolean produtoParaAdulto = Boolean.FALSE;
 
     @Override
     public String toString() {
@@ -23,6 +24,7 @@ public class Produto {
                 ", nome='" + nome + '\'' +
                 ", preco=" + preco +
                 ", quantidade=" + quantidade +
+                ", rótulo=" + produtoParaAdulto +
                 '}';
     }
 }

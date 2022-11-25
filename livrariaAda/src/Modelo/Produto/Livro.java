@@ -28,6 +28,7 @@ public class Livro extends Produto{
                 ", listaGenerosLivro=" + listaGenerosLivro +
                 ", escritor='" + escritor + '\'' +
                 ", editora='" + editora + '\'' +
+                ", rótulo=" + this.getProdutoParaAdulto() +
                 '}';
     }
 }

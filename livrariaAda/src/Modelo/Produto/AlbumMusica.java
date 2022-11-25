@@ -28,6 +28,7 @@ public class AlbumMusica extends Produto{
                 ", listaMusicosOuBandas=" + listaMusicosOuBandas +
                 ", listaSelos=" + listaSelos +
                 ", listaGenerosMusicas=" + listaGenerosMusicas +
+                ", rótulo=" + this.getProdutoParaAdulto() +
                 '}';
     }
 }

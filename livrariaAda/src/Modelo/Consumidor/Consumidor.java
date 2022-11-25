@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,9 +20,15 @@ import java.util.Map;
 public class Consumidor {
     private String nome;
     private String email;
+    private Date dataNascimento;
 
     EstoqueGeral estoqueGeral = EstoqueGeral.getInstance();
     CarrinhoDeCompra carrinhoDeCompra = new CarrinhoDeCompra();
+
+
+    public int getIdade(){
+        return Calendar.getInstance().get(1) - this.dataNascimento.getYear();
+    }
 
     public void mostrarCategorias(){
         estoqueGeral.consultaCategorias().forEach(c -> {
@@ -35,10 +43,18 @@ public class Consumidor {
         }
     }
 
+    public boolean verificaAutorizacaoCompra(Map<Integer, ? extends Produto> estoquePorCategoria, Integer id){
+        if (this.getIdade() > 18 && estoquePorCategoria.get(id).getProdutoParaAdulto() ){
+            return true;
+        } else if (!estoquePorCategoria.get(id).getProdutoParaAdulto()) {
+            return true;
+        }
+        return false;
+    }
+
     public void inserirProdutoNoCarrinhoDeCompras(CategoriasProdutosEmEstoque categoria, Integer id, Integer quantidade){
-        Map<Integer, ? extends Produto> estoquePorCategoria = new HashMap<>();
-        estoquePorCategoria =  estoqueGeral.consultaProdutosPorCategoria(categoria);
-        if(estoquePorCategoria.get(id).getQuantidade()<quantidade){
+        Map<Integer, ? extends Produto> estoquePorCategoria = estoqueGeral.consultaProdutosPorCategoria(categoria);
+        if(estoquePorCategoria.get(id).getQuantidade()<quantidade && verificaAutorizacaoCompra(estoquePorCategoria, id)){
             System.out.println("Quantidade Insuficiente para atender pedido");
         } else {
             switch (categoria) {

@@ -30,6 +30,7 @@ public class Filme extends Produto{
                 ", listaDiretores=" + listaDiretores +
                 ", listaProdutores=" + listaProdutores +
                 ", listaGenerosFilme=" + listaGenerosFilme +
+                ", rótulo=" + this.getProdutoParaAdulto() +
                 '}';
     }
 }

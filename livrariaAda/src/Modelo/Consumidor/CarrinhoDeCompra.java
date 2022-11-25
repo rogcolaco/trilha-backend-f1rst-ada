@@ -62,7 +62,7 @@ public class CarrinhoDeCompra{
 
     public void checkout(){
         meuCarrinhoDeCompras.forEach((keyCategoria, produtosCompradosPorCategoria) -> {
-            System.out.println(produtosCompradosPorCategoria.keySet());
+//            System.out.println(produtosCompradosPorCategoria.keySet());
             produtosCompradosPorCategoria.keySet().forEach(c -> {
                 produtosCompradosPorCategoria.get(c).setQuantidade(estoqueGeral.getEstoqueGeral().get(keyCategoria).get(c).getQuantidade()
                         - produtosCompradosPorCategoria.get(c).getQuantidade());

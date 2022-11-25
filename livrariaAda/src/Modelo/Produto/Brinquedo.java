@@ -22,6 +22,7 @@ public class Brinquedo extends Produto{
                 ", preco=" + this.getPreco() +
                 ", quantidade=" + this.getQuantidade() +
                 ", tipo=" + tipo +
+                ", rótulo=" + this.getProdutoParaAdulto() +
                 '}';
     }
 }

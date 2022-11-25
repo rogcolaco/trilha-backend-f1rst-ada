@@ -25,6 +25,7 @@ public class Jogo extends Produto{
                 ", distribuidora='" + distribuidora + '\'' +
                 ", generoJogo=" + generoJogo +
                 ", estudioJogo='" + estudioJogo + '\'' +
+                ", rótulo=" + this.getProdutoParaAdulto() +
                 '}';
     }
 }

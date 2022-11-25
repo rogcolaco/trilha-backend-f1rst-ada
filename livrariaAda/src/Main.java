@@ -9,6 +9,8 @@ import Enum.GeneroJogo;
 import Enum.CategoriasProdutosEmEstoque;
 import Modelo.Produto.Jogo;
 
+import java.sql.Date;
+
 public class Main {
     public static void main(String[] args) {
         EstoqueGenerico<Brinquedo> estoqueBrinquedo = new EstoqueGenerico<>();
@@ -51,6 +53,7 @@ public class Main {
 
         System.out.println("\n\n\n Teste consumidor\n\n\n");
         Consumidor c = new Consumidor();
+        c.setDataNascimento(new Date(1985,6,14));
         Consumidor c2 = new Consumidor();
         c.mostrarCategorias();
         c.mostrarProdutosPorCategorias(CategoriasProdutosEmEstoque.BRINQUEDO);
@@ -61,6 +64,7 @@ public class Main {
 
         c.inserirProdutoNoCarrinhoDeCompras(CategoriasProdutosEmEstoque.BRINQUEDO, 2, 5);
         c.inserirProdutoNoCarrinhoDeCompras(CategoriasProdutosEmEstoque.JOGO, 1, 1);
+        c.getIdade();
         System.out.println(c.getCarrinhoDeCompra());
         c.finalizarCompra(c.getCarrinhoDeCompra());
         System.out.println("Valor total caixa: " + caixa.getValorTotalCaixa());
