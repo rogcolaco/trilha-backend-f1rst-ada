@@ -43,14 +43,18 @@ public class ListaEncadeada<T> {
     public T get(int posicao) throws Exception {
         this.validateRulesList(posicao);
 
-        if (posicao == 0) return primeiroItem.getDado();
-
-        ItemListaEncadeada<T> item = primeiroItem;
-
-        for (int i = 0; i < posicao; i++) {
-            item = item.getProximo();
+        ItemListaEncadeada<T> item;
+        if (posicao <= tamanho/2){
+            item = primeiroItem;
+            for (int i = 0; i < posicao; i++) {
+                item = item.getProximo();
+            }
+        } else {
+            item = ultimoItem;
+            for (int i = tamanho; i < posicao; i--) {
+                item = item.getAnterior();
+            }
         }
-
         return item.getDado();
     }
 
@@ -133,10 +137,18 @@ public class ListaEncadeada<T> {
         listaEncadeada.add("André");
         listaEncadeada.add("Ultimo");
         listaEncadeada.add("Fábio");
+        listaEncadeada.add("Tite");
+        listaEncadeada.add("Neymar");
+        listaEncadeada.add("Cristiano");
+        listaEncadeada.add("Messi");
 
         listaEncadeada.printList();
 
         listaEncadeada.printListReverse();
+
+        System.out.println("####");
+        System.out.println(listaEncadeada.get(2));
+        System.out.println(listaEncadeada.get(6));
 
         //lista.remove(3);
 
