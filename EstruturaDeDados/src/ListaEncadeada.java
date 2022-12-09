@@ -44,14 +44,14 @@ public class ListaEncadeada<T> {
         this.validateRulesList(posicao);
 
         ItemListaEncadeada<T> item;
-        if (posicao <= tamanho/2){
+        if (posicao < tamanho/2){
             item = primeiroItem;
             for (int i = 0; i < posicao; i++) {
                 item = item.getProximo();
             }
         } else {
             item = ultimoItem;
-            for (int i = tamanho; i < posicao; i--) {
+            for (int i = tamanho - 1; i > posicao; i--) {
                 item = item.getAnterior();
             }
         }
@@ -147,8 +147,8 @@ public class ListaEncadeada<T> {
         listaEncadeada.printListReverse();
 
         System.out.println("####");
-        System.out.println(listaEncadeada.get(2));
-        System.out.println(listaEncadeada.get(6));
+        System.out.println(listaEncadeada.get(3));
+        System.out.println(listaEncadeada.get(5));
 
         //lista.remove(3);
 
