@@ -1,10 +1,12 @@
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class FilaPilha {
     Scanner s = new Scanner(System.in);
     Queue<String> fila = new LinkedList<>();
+    Stack<String> pilha = new Stack<>();
 
     public int MenuPrincipal () throws Exception {
         System.out.println("Menu Pricipal - Escolha a estrutura que deseja alterar");
@@ -18,11 +20,11 @@ public class FilaPilha {
         }
     }
 
-    public int MenuFila() throws Exception {
+    public int MenuSecundario(String tipoEstrutura) throws Exception {
         System.out.println("\nMenu Fila - Escolha a opcao desejada");
-        System.out.println("1 - Adicionar item à fila");
-        System.out.println("2 - Revomer item da fila");
-        System.out.println("3 - Lista itens da Fila");
+        System.out.println("1 - Adicionar item à " + tipoEstrutura);
+        System.out.println("2 - Revomer item da " + tipoEstrutura);
+        System.out.println("3 - Lista itens da " + tipoEstrutura);
         System.out.println("0 - Voltar");
         try{
             return s.nextInt();
@@ -31,9 +33,20 @@ public class FilaPilha {
         }
     }
 
-    public void EscolhaFila(int opcaoMenuFila){
+    public void EscolhaMenuSecundario(int opcaoMenuSecundario, int opcaoMenuPrincipal){
         s.nextLine();
-        switch (opcaoMenuFila) {
+        if (opcaoMenuPrincipal == 1 ) {
+            this.TratarDadosFila(opcaoMenuSecundario);
+        }
+
+        if (opcaoMenuPrincipal == 2) {
+            this.TratarDadosPilha(opcaoMenuSecundario);
+        }
+
+    }
+
+    public void TratarDadosFila(int opcaoMenuSecundario){
+        switch (opcaoMenuSecundario) {
             case 1:
                 String valor = s.nextLine();
                 fila.add(valor);
@@ -43,7 +56,7 @@ public class FilaPilha {
                 if (fila.size() > 0) {
                     System.out.println("Item removido com sucesso: " + fila.poll() + "\n");
                 } else {
-                    System.out.println("lista Vazia\n");
+                    System.out.println("Fila vazia\n");
                 }
                 break;
 
@@ -59,17 +72,47 @@ public class FilaPilha {
         }
     }
 
+    public void TratarDadosPilha(int opcaoMenuSecundario){
+        switch (opcaoMenuSecundario) {
+            case 1:
+                String valor = s.nextLine();
+                pilha.push(valor);
+                break;
+
+            case 2:
+                if (!pilha.isEmpty()) {
+                    System.out.println("Item removido com sucesso: " + pilha.pop() + "\n");
+                } else {
+                    System.out.println("Pìlha Vazia\n");
+                }
+                break;
+
+            case 3:
+                System.out.println("Itens na pilha: " + pilha + "\n");
+                break;
+
+            case 0:
+                System.out.println("Retornando ao menu principal\n");
+
+            default:
+                System.out.println("Por favor escolha uma opção válida\n");
+        }
+    }
+
     public static void main(String[] args) throws Exception {
         FilaPilha filaPilha = new FilaPilha();
         int opcaoMenuPrincipal = filaPilha.MenuPrincipal();
         while (opcaoMenuPrincipal != 0 ){
+            int opcaoMenuSecundario;
             switch (opcaoMenuPrincipal){
                 case 1:
-                    int opcaoMenuFila = filaPilha.MenuFila();
-                    filaPilha.EscolhaFila(opcaoMenuFila);
+                    opcaoMenuSecundario = filaPilha.MenuSecundario("fila");
+                    filaPilha.EscolhaMenuSecundario(opcaoMenuSecundario , opcaoMenuPrincipal);
                     break;
 
                 case 2:
+                    opcaoMenuSecundario = filaPilha.MenuSecundario("pilha");
+                    filaPilha.EscolhaMenuSecundario(opcaoMenuSecundario , opcaoMenuPrincipal);
                     break;
 
                 case 0:
@@ -80,6 +123,7 @@ public class FilaPilha {
                     System.out.println("Por favor escolha uma opção válida\n");
             }
             opcaoMenuPrincipal = filaPilha.MenuPrincipal();
+            System.out.println(opcaoMenuPrincipal);
         }
     }
 }
