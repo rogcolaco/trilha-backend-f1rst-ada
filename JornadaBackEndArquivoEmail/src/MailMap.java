@@ -9,6 +9,10 @@ public class MailMap {
         return mapMail;
     }
 
+    public MailMap() {
+        this.mapMail = new LinkedHashMap<>();
+    }
+
     public void setMapMail(LinkedHashMap<String, LinkedList<Email>> mapMail) {
         this.mapMail = mapMail;
     }
@@ -21,5 +25,9 @@ public class MailMap {
             novoEmail.add(mail);
             mapMail.put(mail.getEnd_remetente(), novoEmail);
         }
+    }
+
+    public int getTotal() {
+        return getMapMail().size();
     }
 }

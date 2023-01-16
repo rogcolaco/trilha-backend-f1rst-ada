@@ -14,4 +14,8 @@ public class CaixaEntrada {
         caixaEntrada.add(email);
     }
 
+    public void totalCatalogoEndereco(){
+        System.out.println(caixaEntrada.getTotal());
+    }
+
 }
