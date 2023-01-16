@@ -28,6 +28,7 @@ public class Main {
         ce.adicionarEmail(email2);
         ce.adicionarEmail(email3);
         ce.totalCatalogoEndereco();
+        ce.totalEmailsPorRemetente("cotato@patatipatata.com");
 
     }
 

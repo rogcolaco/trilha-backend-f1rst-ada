@@ -18,4 +18,8 @@ public class CaixaEntrada {
         System.out.println(caixaEntrada.getTotal());
     }
 
+    public void totalEmailsPorRemetente(String remetente){
+        System.out.println(caixaEntrada.getTotalPorRemetente(remetente));
+    }
+
 }

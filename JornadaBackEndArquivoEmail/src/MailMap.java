@@ -30,4 +30,8 @@ public class MailMap {
     public int getTotal() {
         return getMapMail().size();
     }
+
+    public int getTotalPorRemetente(String remetente) {
+        return getMapMail().get(remetente).size();
+    }
 }
