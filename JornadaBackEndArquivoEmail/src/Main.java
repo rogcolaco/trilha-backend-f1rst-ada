@@ -15,8 +15,8 @@ public class Main {
         Email email2 = new Email();
         email2.setEnd_remetente("manovoutomarbanho@gmail.com");
         email2.setAssunto("Mandem pix");
-        email2.setData_envio(LocalDate.of(2022,05,10));
-        email2.setData_recebimento(LocalDate.of(2022,05,10));
+        email2.setData_envio(LocalDate.of(2023,01,16));
+        email2.setData_recebimento(LocalDate.of(2023,01,16));
         email2.setTexto("Bla bla");
 
         Email email3 = new Email();
@@ -34,7 +34,8 @@ public class Main {
         ce.removerEmailsAntigos(LocalDate.of(2022,07,10));
         ce.totalCatalogoEndereco();
         ce.totalEmailsPorRemetente("manovoutomarbanho@gmail.com");
-        ce.totalEmailsPorRemetente("cotato@patatipatata.com");
+//        ce.totalEmailsPorRemetente("cotato@patatipatata.com");
+        ce.listarRemetentesDeHoje();
 
     }
 

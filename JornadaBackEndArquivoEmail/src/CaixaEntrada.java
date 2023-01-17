@@ -28,4 +28,8 @@ public class CaixaEntrada {
         caixaEntrada.removerEmailsPorData(localDate);
     }
 
+    public void listarRemetentesDeHoje(){
+        System.out.println(caixaEntrada.getRemetentesDiario());
+    }
+
 }

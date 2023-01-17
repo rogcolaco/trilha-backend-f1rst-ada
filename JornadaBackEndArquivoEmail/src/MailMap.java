@@ -1,7 +1,5 @@
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
+import java.util.*;
 
 public class MailMap {
 
@@ -55,5 +53,19 @@ public class MailMap {
         chavesVazias.forEach(value -> {
             mapMail.remove(value);
         });
+    }
+
+    public Set<String> getRemetentesDiario() {
+        Set<String> remetentesDiario = new HashSet<>();
+
+        mapMail.forEach((key, value) -> {
+            value.forEach(element -> {
+                if (element.getData_recebimento().isEqual(LocalDate.now())){
+                    remetentesDiario.add(key);
+                }
+            });
+
+        });
+        return remetentesDiario;
     }
 }
