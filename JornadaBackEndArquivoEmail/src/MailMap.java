@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
@@ -31,7 +33,27 @@ public class MailMap {
         return getMapMail().size();
     }
 
-    public int getTotalPorRemetente(String remetente) {
-        return getMapMail().get(remetente).size();
+    public int getTotalPorRemetente(String remetente) throws Exception {
+        if(!mapMail.containsKey(remetente)){
+            throw new Exception("Remetente não existe");
+        } else{
+            return getMapMail().get(remetente).size();
+        }
+    }
+
+    public void removerEmailsPorData(LocalDate localDate) {
+        ArrayList<String> chavesVazias = new ArrayList();
+
+        mapMail.forEach((key, value) -> {
+            value.forEach(element -> {
+                if (element.getData_recebimento().isBefore(localDate)){
+                    value.remove(element);
+                }
+            });
+            if (value.size() == 0) chavesVazias.add(key);
+        });
+        chavesVazias.forEach(value -> {
+            mapMail.remove(value);
+        });
     }
 }

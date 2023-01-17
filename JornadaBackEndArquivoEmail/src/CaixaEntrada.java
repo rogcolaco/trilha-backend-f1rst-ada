@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class CaixaEntrada {
 
     private MailMap caixaEntrada = new MailMap();
@@ -18,8 +20,12 @@ public class CaixaEntrada {
         System.out.println(caixaEntrada.getTotal());
     }
 
-    public void totalEmailsPorRemetente(String remetente){
+    public void totalEmailsPorRemetente(String remetente) throws Exception {
         System.out.println(caixaEntrada.getTotalPorRemetente(remetente));
+    }
+
+    public void removerEmailsAntigos(LocalDate localDate){
+        caixaEntrada.removerEmailsPorData(localDate);
     }
 
 }
